@@ -1,0 +1,142 @@
+[gd_scene load_steps=7 format=3 uid="uid://drnytfetlb1we"]
+
+[ext_resource type="Script" path="res://scripts/controls_menu.gd" id="1_f6i03"]
+[ext_resource type="Texture2D" uid="uid://bcuxbxi7ty7cl" path="res://assets/Deco/water_a_8frames.png" id="1_qlk1a"]
+[ext_resource type="Texture2D" uid="uid://ctxhbyr7a3swe" path="res://assets/Backgrounds/mountains_a.png" id="2_xavbu"]
+[ext_resource type="Texture2D" uid="uid://c68quxuwq7hk3" path="res://assets/Backgrounds/trees.png" id="3_yxfim"]
+[ext_resource type="Texture2D" uid="uid://l3qs628v6ra8" path="res://assets/UI/arrow.png" id="4_te12r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e3odg"]
+bg_color = Color(0.6, 0.521569, 0.886275, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.389783, 0.00183725, 0.689851, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="controls_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f6i03")
+
+[node name="Sky_background" type="Sprite2D" parent="."]
+position = Vector2(776, 1173)
+rotation = 3.14159
+scale = Vector2(11.4468, 111.234)
+texture = ExtResource("1_qlk1a")
+
+[node name="Mountains_background" type="Sprite2D" parent="."]
+position = Vector2(584, 324)
+scale = Vector2(5.74219, 5.0625)
+texture = ExtResource("2_xavbu")
+
+[node name="Forest_background" type="Sprite2D" parent="."]
+position = Vector2(586, 426)
+scale = Vector2(5.74219, 6.11541)
+texture = ExtResource("3_yxfim")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.0
+offset_top = -292.0
+offset_right = 141.0
+offset_bottom = 292.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_e3odg")
+
+[node name="Arrow_UP" type="Sprite2D" parent="."]
+position = Vector2(499, 115)
+rotation = 4.71239
+scale = Vector2(5, 5)
+texture = ExtResource("4_te12r")
+hframes = 4
+
+[node name="Arrow_RIGHT" type="Sprite2D" parent="."]
+position = Vector2(498, 238)
+scale = Vector2(5, 5)
+texture = ExtResource("4_te12r")
+hframes = 4
+
+[node name="Arrow_LEFT" type="Sprite2D" parent="."]
+position = Vector2(495, 370)
+rotation = 3.14159
+scale = Vector2(5, 5)
+texture = ExtResource("4_te12r")
+hframes = 4
+
+[node name="Arrow_DOWN" type="Sprite2D" parent="."]
+position = Vector2(501, 513)
+rotation = 1.5708
+scale = Vector2(5, 5)
+texture = ExtResource("4_te12r")
+hframes = 4
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 570.0
+offset_top = 75.0
+offset_right = 695.0
+offset_bottom = 544.0
+text = "
+JUMP
+
+
+
+
+MOVE RIGHT
+
+
+
+
+MOVE LEFT
+
+
+
+
+STOMP
+(while falling)"
+
+[node name="back_button_panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.891
+anchor_top = 0.884
+anchor_right = 0.891
+anchor_bottom = 0.884
+offset_left = -99.432
+offset_top = -49.832
+offset_right = 100.568
+offset_bottom = 50.168
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_e3odg")
+
+[node name="back_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.89
+anchor_top = 0.883
+anchor_right = 0.89
+anchor_bottom = 0.883
+offset_left = -62.28
+offset_top = -31.184
+offset_right = 62.72
+offset_bottom = 33.816
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "BACK"
+
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

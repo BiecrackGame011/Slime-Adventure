@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://bj7umi6bqq3ut"]
+
+[ext_resource type="Script" path="res://scripts/HUD.gd" id="1_rd4a6"]
+[ext_resource type="PackedScene" uid="uid://bbhddyw4mndyk" path="res://scenes/pause_menu.tscn" id="2_bhfdd"]
+[ext_resource type="Texture2D" uid="uid://cq1rwex63s2a" path="res://assets/UI/hearts.png" id="2_gw6g1"]
+[ext_resource type="AudioStream" uid="uid://cvqsovvferrmw" path="res://sounds/error_005.ogg" id="4_sl0ib"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6s867"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqiem"]
+bg_color = Color(0.72549, 0.47451, 0.231373, 0.792157)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_rd4a6")
+
+[node name="No_Important" type="Panel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6s867")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 68.0
+offset_bottom = 25.0
+scale = Vector2(5, 5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_cqiem")
+
+[node name="Coins" type="Label" parent="."]
+offset_left = 121.0
+offset_top = 6.0
+offset_right = 163.0
+offset_bottom = 29.0
+scale = Vector2(5, 5)
+text = "  0/10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -340.0
+offset_top = 1.0
+offset_right = -272.0
+offset_bottom = 26.0
+grow_horizontal = 0
+scale = Vector2(5, 5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_cqiem")
+
+[node name="Hearts1" type="Sprite2D" parent="."]
+position = Vector2(905, 58)
+scale = Vector2(6, 6)
+texture = ExtResource("2_gw6g1")
+hframes = 4
+frame = 1
+
+[node name="Hearts2" type="Sprite2D" parent="."]
+position = Vector2(985, 58)
+scale = Vector2(6, 6)
+texture = ExtResource("2_gw6g1")
+hframes = 4
+frame = 1
+
+[node name="Hearts3" type="Sprite2D" parent="."]
+position = Vector2(1065, 58)
+scale = Vector2(6, 6)
+texture = ExtResource("2_gw6g1")
+hframes = 4
+frame = 1
+
+[node name="pause_menu" parent="." instance=ExtResource("2_bhfdd")]
+offset_right = 4.0
+offset_bottom = 3.0
+
+[node name="lose_life_audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_sl0ib")
+
+[node name="can_take_damage_timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="can_take_damage_timer" to="." method="_on_can_take_damage_timer_timeout"]
